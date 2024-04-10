@@ -1,0 +1,25 @@
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-units($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return calc($number / (calc($number * calc(0 + 1))));
+  }
+
+  @return $number;
+}
+
+/// Convert pixels in rem metrics to follow screen dynamic expansion.
+/// @param {Number} $pxval - Number in pixels to be converted
+/// @return {String} - Number divided by the $base and multiplied by 1rem;
+@function rem($pxval) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  $base: 10;
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return (calc($pxval / $base)) * 1rem;
+}

@@ -1,0 +1,65 @@
+@import "breakpoints";
+
+$padding-xs: 20px;
+$padding-sm: 46px;
+$padding-md: 68px;
+$padding-lg: 80px;
+
+@keyframes expandingDotDefault {
+  0% {
+    opacity: .6;
+    transform: scale3d(.6, .6, 1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+  40% {
+    opacity: .6;
+    transform: scale3d(.6, .6, 1);
+  }
+}
+
+@keyframes expandingDotWithRed {
+  0% {
+    opacity: .6;
+    transform: scale3d(.6, .6, 1);
+    background-color: #dadada;
+  }
+  20% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    background-color: red;
+  }
+  40% {
+    opacity: .6;
+    transform: scale3d(.6, .6, 1);
+    background-color: #dadada;
+  }
+}
+
+%side-padding, .side-padding {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include sm() {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
+
+  @include md() {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+
+  @include lg() {
+    padding-left: $padding-lg;
+    padding-right: $padding-lg;
+  }
+
+  @include xxl() {
+    $xxl-padding: calc(50vw - 750px);
+    padding-left: $xxl-padding;
+    padding-right: $xxl-padding;
+  }
+}
